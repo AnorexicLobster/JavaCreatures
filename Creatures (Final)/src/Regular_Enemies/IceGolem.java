@@ -5,30 +5,27 @@ public class IceGolem extends Monster{
     public IceGolem(){
 
         //Main Creature Details.
-        HP = 100;
-        minAttack = 8;
-        maxAttack = 14;
-        movementSpeed = 8;
+        setRace("Ice Golem");
+        setHP(100);
+        setMinAttack(8);        
+        setMaxAttack(14);
+        setMovementSpeed(8);
 
         //Elite Names.
-        bossName1 = "Itariel the Frozen Demon";
-        bossName2 = "Nedia";
-        bossName3 = "Vaaldra the Ice Princess";
+        setEliteNames("Itariel the Frozen Demon", "Nedia", "Vaaldra the Ice Princess");
 
         //Item Drops.
-        commonDrop = "Ice Hammer - (Type '15' to pick up: Or '0' to leave).";
-        rareDrop = "Frozen Ring - (Type '16' to pick up: Or '0' to leave)."; 
-        legendaryDrop = "Ijik's Ice Crown - (Type '17' to pick up: Or '0' to leave).";
-
+        setItemDrops("Ice Hammer - (Type '15' to pick up: Or '0' to leave).",
+                "Frozen Ring - (Type '16' to pick up: Or '0' to leave).",
+                "Ijik's Ice Crown - (Type '17' to pick up: Or '0' to leave).");
+        
         //Attack Names.
-        attackOne = "Ice Blast"; 
-        attackTwo = "Frozen Fury";
-        specialAttack = "Ijik's Avalanche";   
+        setAttackNames("Ice Blast", "Frozen Fury", "Ijik's Avalanche");
 
         //Dialogue Lines.
-        DialogueOne = "\n" + "With Frozen Fists I will shatter your dreams and freeze your hopes!" + "\n";
-        DialogueTwo = "\n" + "From the depths of glaciers, you awaken me, cold and relentless. With icy power, I will break you!" + "\n";
-        DialogueThree = "\n" + "Behold the embodiment of Ijik's wrath! With unyielding force, I shall freeze the battlefield and overcome all who oppose me." + "\n";
+        setDialogueOne("With Frozen Fists I will shatter your dreams and freeze your hopes!");
+        setDialogueTwo("From the depths of glaciers, you awaken me, cold and relentless. With icy power, I will break you!");
+        setDialogueThree("Behold the embodiment of Ijik's wrath! With unyielding force, I shall freeze the battlefield and overcome all who oppose me.");
     }
     
 }

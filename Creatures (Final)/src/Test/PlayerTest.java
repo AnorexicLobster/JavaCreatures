@@ -4,17 +4,15 @@ import Regular_Enemies.Monster;
 public class PlayerTest extends Monster{
 
     public PlayerTest(){
-        
+
         //Main Creature Details.
-        race = "Human";
+        setRace("Human");
+        setHP(3000);
+        setMinAttack(20);        
+        setMaxAttack(25);
+        setMovementSpeed(8);
         
-        HP = 3000;
-        minAttack = 15;
-        maxAttack = 25;
- 
         //Attack Names.
-        attackOne = "Basic Attack"; 
-        attackTwo = "Heavy Attack";
-        specialAttack = "Special Attack"; 
+        setAttackNames("Basic Attack", "Heavy Attack", "Special Attack");
     }
 }

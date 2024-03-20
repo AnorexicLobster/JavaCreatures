@@ -3,32 +3,30 @@ public class TheUnknown extends Boss{
 
     public TheUnknown(){
 
-        //Main Boss details.    
-        name = "The Unknown";
-        HP = 400; 
-        minAttack = 12;
-        maxAttack = 20;
-        movementSpeed = 30;
-
-        //Boss Item Drops.
-        commonDrop = "Thief's Ring - (Type '21' to pick up: Or '0' to leave).";
-        rareDrop = "Irrilian Staf - (Type '22' to pick up: Or '0' to leave).";
-        legendaryDrop = "Olko's Twin Daggers - (Type '23' to pick up: Or '0' to leave).";
-
-        //Boss Attacks.
-        attackOne = "Misty Dropkick";
-        attackTwo = "Shadow Blade Frenzy";
-        specialAttack = "Soul Possession";
-
-        //Dialogue Lines.
-        DialogueOne = "\n" + "In the shadows, I am the embodiment of terror. Witness the eclipse of hope as I unleash my malevolent fury." + "\n";
-        DialogueTwo = "\n" + "Submit to the void, for I am its master. In my wake, only despair and ruin shall remain." + "\n";
-        DialogueThree = "\n" + "From the depths of darkness, I emerge, wielding shadows as my weapon. Surrender to oblivion or face eternal torment." + "\n";
+          //Main Creature Details.
+          setName("The Unknown");
+          setHP(400);
+          setMinAttack(12);        
+          setMaxAttack(20);
+          setMovementSpeed(30);
+  
+          //Item Drops.
+          setItemDrops("Thief's Ring - (Type '21' to pick up: Or '0' to leave).",
+                    "Irrilian Staf - (Type '22' to pick up: Or '0' to leave).",
+                    "Olko's Twin Daggers - (Type '23' to pick up: Or '0' to leave).");
+          
+          //Attack Names.
+          setAttackNames("Misty Dropkick", "Shadow Blade Frenzy", "Soul Possession");
+  
+          //Dialogue Lines.
+          setDialogueOne("In the shadows, I am the embodiment of terror. Witness the eclipse of hope as I unleash my malevolent fury.");
+          setDialogueTwo("Submit to the void, for I am its master. In my wake, only despair and ruin shall remain.");
+          setDialogueThree("From the depths of darkness, I emerge, wielding shadows as my weapon. Surrender to oblivion or face eternal torment.");
     }
 
 
     //The Unknown's Special Ability 1 - Heal. 
-    //To be called recurringly. 
+    //Recurring Ability. 
     public double specialHealthRegen(){
         double healthIncrement = 2;
         healthIncrement++;
@@ -38,9 +36,10 @@ public class TheUnknown extends Boss{
         return healthIncrement;
     }
 
-    
     //The Unknown's Special Ability 2 - Double Attack.
+    //Recurring Ability.
     public double specialDoubleAttack(){
+        System.out.println("Double Attack");
         double attackOne = attack();
         double attackTwo = attack();
 

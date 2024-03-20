@@ -5,39 +5,39 @@ import java.util.*;
 public class Monster{
 
     // Main monster Details. 
-    protected String race;
-    protected String name;
-    protected double HP; 
-    protected double minAttack;
-    protected double maxAttack;
-    protected double movementSpeed;
+    private String race;
+    private String name;
+    private double HP; 
+    private double minAttack;
+    private double maxAttack;
+    private double movementSpeed;
 
     //Elite Names. 
-    protected String bossName1;
-    protected String bossName2;
-    protected String bossName3;
+    private String bossNameOne;
+    private String bossNameTwo;
+    private String bossNameThree;
 
     //Item Drops. 
-    protected String commonDrop;
-    protected String rareDrop;
-    protected String legendaryDrop;
-    protected int randomGoldDrop;
+    private String commonDrop;
+    private String rareDrop;
+    private String legendaryDrop;
+    private int randomGoldDrop;
 
     //Fields for Rarity creature Generator. 
     private int randomCreatureGen;
     private String bossNameGen;
 
     //Fields for attack cycle. Both names and attack range. 
-    protected String attackOne;
-    protected String attackTwo;
-    protected String specialAttack;
-    protected int attackRange;
+    private String attackOne;
+    private String attackTwo;
+    private String specialAttack;
+    private int attackRange;
 
     //Fields for Dialogue.
     protected int randomDialogueGen;
-    protected String DialogueOne;
-    protected String DialogueTwo;
-    protected String DialogueThree;
+    protected String dialogueOne;
+    protected String dialogueTwo;
+    protected String dialogueThree;
 
 
 
@@ -47,8 +47,7 @@ public class Monster{
     }
 
     public String getName(){
-        String aName = name;
-        return aName;
+        return name;
     }
 
     public double getHP(){
@@ -63,46 +62,95 @@ public class Monster{
         return maxAttack;
     }
 
-    public String getEliteNames(){
-        String bossNames = bossName1 + " " + bossName2 + " " + bossName3;
-        return bossNames;
+    public String getBossNameOne(){
+        return bossNameOne;
+    }
+
+    public String getBossNameTwo(){
+        return bossNameTwo;
+    }
+
+    public String getBossNameThree(){
+        return bossNameThree;
     }
 
     public String getItemDrops(){
-        String itemDrops = commonDrop + rareDrop + legendaryDrop;
+        String itemDrops = "Common Drop: " + commonDrop + " Rare Drop: " + rareDrop + " Legendary Drop: " + legendaryDrop;
         return itemDrops;
     }
 
     public String getAttackNames(){
-        String attackNames = attackOne + " " + attackTwo + " " + specialAttack;
+        String attackNames = "Basic Attack: " + attackOne + " Heavy Attack: " + attackTwo + " Special Attack: " + specialAttack;
         return attackNames;
     }
 
-    public String getAttackOne() {
-        return attackOne;
+    public String getDialogueOne() {
+        return dialogueOne;
     }
 
-    public String getAttackTwo() {
-        return attackTwo;
+    public String getDialogueTwo() {
+        return dialogueTwo;
     }
 
-    public String getSpecialAttack() {
-        return specialAttack;
+    public String getDialogueThree() {
+        return dialogueThree;
     }
-
 
 
     //Setters.
-    public double setMinAttack(double aMinAttack){
+    public void setRace(String aRace){
+        race = aRace;
+    }
+
+    public void setName(String aName){
+        name = aName;
+    }
+
+    public void setHP(double aHP){
+        HP = aHP;
+    }
+
+    public void setMinAttack(double aMinAttack){
         minAttack = aMinAttack;
-        return aMinAttack;
     }
 
-    public double setMaxAttack(double aMaxAttack){
-        minAttack = aMaxAttack;
-        return aMaxAttack;
+    public void setMaxAttack(double aMaxAttack){
+        maxAttack = aMaxAttack;
     }
 
+    public void setMovementSpeed(double aMovementSpeed){
+        movementSpeed = aMovementSpeed;
+    }
+
+    public void setAttackNames(String aAttackOne, String aAttackTwo, String aSpecialAttack){
+        attackOne = aAttackOne;
+        attackTwo = aAttackTwo;
+        specialAttack = aSpecialAttack;
+    }
+
+    public void setItemDrops(String aCommonDrop, String aRareDrop, String aLegendaryDrop){
+        commonDrop = aCommonDrop;
+        rareDrop = aRareDrop;
+        legendaryDrop = aLegendaryDrop;
+    }
+
+    public void setEliteNames(String aBossNameOne, String aBossNameTwo, String aBossNameThree){
+        bossNameOne = aBossNameOne;
+        bossNameTwo = aBossNameTwo;
+        bossNameThree = aBossNameThree;
+    }
+
+    public void setDialogueOne(String dialogueOne) {
+        this.dialogueOne = dialogueOne;
+    }
+
+    public void setDialogueTwo(String dialogueTwo) {
+        this.dialogueTwo = dialogueTwo;
+    }
+
+    public void setDialogueThree(String dialogueThree) {
+        this.dialogueThree = dialogueThree;
+    }
 
 
     //Other Methods:
@@ -111,29 +159,31 @@ public class Monster{
     public String encounterMessage(){
         String encounter = "";
         encounter += "You've encountered: " + getName() + "\n";
+        encounter += dialogue() + "\n";
         encounter += "They have: " + getHP() + " HP." + "\n";
         encounter += "Minimum Attack Power: " + getMinAttack() + "\n"; 
         encounter += "Maximum Attack Power: " + getMaxAttack() + "\n"; 
-
-        dialogue();
 
         return encounter;
     }
 
 
     //Method for generating Random Dialogue.
-    public void dialogue(){
+    public String dialogue(){
         randomDialogueGen = (int)(Math.random()*3)+1;
+        String dialogueOutput = "";
 
         if (randomDialogueGen == 1){
-            System.out.println(DialogueOne);
+            dialogueOutput = dialogueOne;
 
         } else if (randomDialogueGen == 2){
-            System.out.println(DialogueTwo);
+            dialogueOutput = dialogueTwo;
 
         } else {
-            System.out.println(DialogueThree);
-        }    
+            dialogueOutput = dialogueThree;
+        } 
+        
+        return dialogueOutput;
     }
 
 
@@ -145,7 +195,7 @@ public class Monster{
 
         //Gereates a Random Boss name - Add Some Variety to the Game.
         if (randomCreatureGen >= 85) {
-            String[] bossNames = {bossName1, bossName2, bossName3}; 
+            String[] bossNames = {bossNameOne, bossNameTwo, bossNameThree}; 
             bossNameGen = bossNames[random.nextInt(bossNames.length)];
             // Stats For the Boss. 
             this.HP = HP + 40;
@@ -175,29 +225,29 @@ public class Monster{
         if (randomItemDrop <= 65 && !(randomCreatureGen >= 85)) {
             randomGoldDrop = (int)(Math.random()*20)+1;
             itemDrop = "You've Killed the " + getName() + "\n" + 
-                    " Items dropped: " + commonDrop + " (Common Item) and " + randomGoldDrop + " Gold";        
+                    " Items dropped: " + commonDrop + " (Common Item) and " + "\n" + randomGoldDrop + " Gold";        
 
         } else  if (randomItemDrop > 65 && !(randomCreatureGen >= 85)){
             randomGoldDrop = (int)(Math.random()*30)+1;
             itemDrop = "You've Killed the " + getName() + "\n" + 
-                                " Items dropped: " + rareDrop + " (Rare Item) and " + randomGoldDrop + " Gold";            
+                                " Items dropped: " + rareDrop + " (Rare Item) and " + "\n" + randomGoldDrop + " Gold";            
         
         // Boss Item Drops. 
         // Note: Common and Rare items repeated, since bosses drop more Gold too.
         } else if (randomItemDrop <= 60  && randomCreatureGen >= 85) {
             randomGoldDrop = (int)(Math.random()*45)+1;
             itemDrop = "You've Killed " + getName() + "\n" + 
-                                " Items dropped: " + commonDrop + " (Common Item) and " + randomGoldDrop + " Gold";  
+                                " Items dropped: " + commonDrop + " (Common Item) and " + "\n" + randomGoldDrop + " Gold";  
     
         } else if (randomItemDrop > 60 && randomItemDrop < 85 && randomCreatureGen >= 85) {
             randomGoldDrop = (int)(Math.random()*75)+1;
             itemDrop = "You've Killed " + getName() + "\n" + 
-                                " Items dropped: " + rareDrop + " (Rare Item) and " + randomGoldDrop + " Gold";
+                                " Items dropped: " + rareDrop + " (Rare Item) and " + "\n" + randomGoldDrop + " Gold";
         
         } else if (randomItemDrop > 85 && randomCreatureGen >= 85) {
             randomGoldDrop = (int)(Math.random()*100)+1;
             itemDrop = "You've Killed " + getName() + "\n" + 
-                                " Items dropped: " + legendaryDrop + " (Legendary Item) and " + randomGoldDrop + " Gold";  
+                                " Items dropped: " + legendaryDrop + " (Legendary Item) and " + "\n" + randomGoldDrop + " Gold";  
         }
 
         return itemDrop;
@@ -229,6 +279,24 @@ public class Monster{
         }   
 
         return attackRange;     
+    }  
+
+    //toString Method.
+    public String toString() {
+        String enemyDetails = "";
+
+        enemyDetails+= "NSame: " + name + "\n";
+        enemyDetails+= "HP: " + HP + "\n";
+        enemyDetails+= "Minimum Attack Power: " + minAttack + " Maximum Attack Power: " + maxAttack + "\n";
+        enemyDetails+= "Movement Speed: " + movementSpeed + "\n"; 
+        enemyDetails+= "Boss Names: " + bossNameOne + ", " + bossNameTwo + ", " + bossNameThree + "\n";
+        enemyDetails+= "Item Drops: Common: " + commonDrop + "\n" + "Rare: " + rareDrop + "\n" + "Legendary: " + legendaryDrop + "\n";
+        enemyDetails+= "Attacks: Regular: " + attackOne + " Heavy: " + attackTwo + " Special: " + specialAttack + "\n";
+        enemyDetails+= "Dialogue One: " + dialogueOne + "\n";
+        enemyDetails+= "Dialogue Two: " + dialogueTwo + "\n"; 
+        enemyDetails+= "Dialogue One: " + dialogueThree + "\n";
+
+
+        return enemyDetails;
     }
-   
 }

@@ -22,9 +22,9 @@ public class Boss{
 
     //Fields for Dialogue.
     protected int randomDialogueGen;
-    protected String DialogueOne;
-    protected String DialogueTwo;
-    protected String DialogueThree;
+    protected String dialogueOne;
+    protected String dialogueTwo;
+    protected String dialogueThree;
 
 
     //Getters. 
@@ -44,19 +44,74 @@ public class Boss{
         return maxAttack;
     }
 
+    public String getItemDrops(){
+        String itemDrops = "Common Drop: " + commonDrop + " Rare Drop: " + rareDrop + " Legendary Drop: " + legendaryDrop;
+        return itemDrops;
+    }
+
+    public String getAttackNames(){
+        String attackNames = "Basic Attack: " + attackOne + " Heavy Attack: " + attackTwo + " Special Attack: " + specialAttack;
+        return attackNames;
+    }
+
+    public String getDialogueOne() {
+        return dialogueOne;
+    }
+
+    public String getDialogueTwo() {
+        return dialogueTwo;
+    }
+
+    public String getDialogueThree() {
+        return dialogueThree;
+    }
+
 
     //Setters. 
-    public double setMinAttack(double aMinAttack){
+    public void setName(String aName){
+        name = aName;
+    }
+
+    public void setHP(double aHP){
+        HP = aHP;
+    }
+
+    public void setMinAttack(double aMinAttack){
         minAttack = aMinAttack;
-        return aMinAttack;
     }
 
-    public double setMaxAttack(double aMaxAttack){
+    public void setMaxAttack(double aMaxAttack){
         minAttack = aMaxAttack;
-        return aMaxAttack;
     }
 
+    public void setAttackNames(String aAttackOne, String aAttackTwo, String aSpecialAttack){
+        attackOne = aAttackOne;
+        attackTwo = aAttackTwo;
+        specialAttack = aSpecialAttack;
+    }
 
+    public void setItemDrops(String aCommonDrop, String aRareDrop, String aLegendaryDrop){
+        commonDrop = aCommonDrop;
+        rareDrop = aRareDrop;
+        legendaryDrop = aLegendaryDrop;
+    }
+
+    public void setMovementSpeed(double aMovementSpeed){
+        movementSpeed = aMovementSpeed;
+    }
+
+    public void setDialogueOne(String dialogueOne) {
+        this.dialogueOne = dialogueOne;
+    }
+
+    public void setDialogueTwo(String dialogueTwo) {
+        this.dialogueTwo = dialogueTwo;
+    }
+
+    public void setDialogueThree(String dialogueThree) {
+        this.dialogueThree = dialogueThree;
+    }
+   
 
     //Other Methods: 
 
@@ -64,33 +119,35 @@ public class Boss{
     public String encounterMessage(){
         String encounter = "";
         encounter += "You've encountered: " + getName() + "\n";
+        encounter += dialogue() + "\n";
         encounter += "They have: " + getHP() + " HP." + "\n";
         encounter += "Minimum Attack Power: " + getMinAttack() + "\n"; 
         encounter += "Maximum Attack Power: " + getMaxAttack() + "\n"; 
-
-        dialogue();
 
         return encounter;
     }
 
     
     //Method for generating Random Dialogue.
-    public void dialogue(){
+    public String dialogue(){
         randomDialogueGen = (int)(Math.random()*3)+1;
+        String dialogueOutput = "";
 
         if (randomDialogueGen == 1){
-            System.out.println(DialogueOne);
+            dialogueOutput = dialogueOne;
 
         } else if (randomDialogueGen == 2){
-            System.out.println(DialogueTwo);
+            dialogueOutput = dialogueTwo;
 
         } else {
-            System.out.println(DialogueThree);
-        }    
+            dialogueOutput = dialogueThree;
+        } 
+        
+        return dialogueOutput;
     }
-
-
-     // Method Responisble for randomly determining item drop. 
+    
+    
+    // Method Responisble for randomly determining item drop. 
     public String death(){
         String itemDrop = "";
          //Dice Roll for random Item Drop after enemy Death.
@@ -99,17 +156,17 @@ public class Boss{
         if (randomItemDrop <= 65) {
             randomGoldDrop = (int)(Math.random()*30)+1;
             itemDrop = "You've Killed the " + getName() + "\n" + 
-                    " Items dropped: " + commonDrop + " (Common Item) and " + randomGoldDrop + " Gold";          
+                    " Items dropped: " + commonDrop + " (Common Item) and " + "\n" + randomGoldDrop + " Gold";          
 
         } else  if (randomItemDrop > 65 && randomItemDrop <= 90){
             randomGoldDrop = (int)(Math.random()*45)+1;
             itemDrop = "You've Killed the " + getName() + "\n" + 
-                                " Items dropped: " + rareDrop + " (Rare Item) and " + randomGoldDrop + " Gold";            
+                                " Items dropped: " + rareDrop + " (Rare Item) and " + "\n" + randomGoldDrop + " Gold";            
         
         } else if (randomItemDrop > 90) {
             randomGoldDrop = (int)(Math.random()*60)+1;
             itemDrop = "You've Killed " + getName() + "\n" + 
-                                " Items dropped: " + legendaryDrop + " (Legendary Item) and " + randomGoldDrop + " Gold";  
+                                " Items dropped: " + legendaryDrop + " (Legendary Item) and " + "\n" + randomGoldDrop + " Gold";  
         }
 
         return itemDrop;
@@ -143,7 +200,21 @@ public class Boss{
         return attackRange;     
     }
 
+    //toString Method.
+    public String toString() {
+        String bossDetails = "";
+
+        bossDetails+= "name: " + name + "\n";
+        bossDetails+= "HP: " + HP + "\n";
+        bossDetails+= "Minimum Attack Power: " + minAttack + " Maximum Attack Power: " + maxAttack + "\n";
+        bossDetails+= "Movement Speed: " + movementSpeed + "\n"; 
+        bossDetails+= "Item Drops: Common: " + commonDrop + "\n" + " Rare: " + rareDrop + "\n" + " Legenndary: " + legendaryDrop + "\n";
+        bossDetails+= "Attacks: Regular: " + attackOne + " Heavy: " + attackTwo + " Special: " + specialAttack + "\n";
+        bossDetails+= "Dialogue One: " + dialogueOne + "\n";
+        bossDetails+= "Dialogue Two: " + dialogueTwo + "\n"; 
+        bossDetails+= "Dialogue One: " + dialogueThree + "\n";
 
 
-
+        return bossDetails;
+    }  
 }

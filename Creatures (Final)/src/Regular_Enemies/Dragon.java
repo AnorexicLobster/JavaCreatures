@@ -7,46 +7,26 @@ public class Dragon extends Monster{
     public Dragon(){
 
         //Main Creature Details.
-        race = "Dragon";
+        setRace("Dragon");
+        setHP(100);
+        setMinAttack(8);        
+        setMaxAttack(12);
+        setMovementSpeed(15);
 
-        HP = 100;
-        minAttack = 8;
-        maxAttack = 12;
-        movementSpeed = 15;
+         //Elite Names.
+        setEliteNames("Ertali the Sky Empress", "Xudoir the Damned", "Ormioryt the Eternal");
 
-        //Elite Names.
-        bossName1 = "Ertali the Sky Empress";
-        bossName2 = "Xudoir the Damned";
-        bossName3 = "Ormioryt the Eternal";
-
-        //Item Drops.
-        commonDrop = "Dragon Scale Gloves - (Type '11' to pick up: Or '0' to leave).";
-        rareDrop = "Dragon Tooth Club - (Type '12' to pick up: Or '0' to leave)."; 
-        legendaryDrop = "Quelii's Elven Bow - (Type '13' to pick up: Or '0' to leave).";
-
+         //Item Drops.
+        setItemDrops("Dragon Scale Gloves - (Type '11' to pick up: Or '0' to leave).",
+                "Dragon Tooth Club - (Type '12' to pick up: Or '0' to leave).",
+                "Quelii's Elven Bow - (Type '13' to pick up: Or '0' to leave).");
+        
         //Attack Names.
-        attackOne = "Arial Assault"; 
-        attackTwo = "Fire Barrage";
-        specialAttack = "Infernal Storm"; 
+        setAttackNames("Arial Assault", "Fire Barrage", "Infernal Storm");
 
         //Dialogue Lines.
-        DialogueOne = "\n" + "Once majestic witness our sorrowful flight! With heavy hearts, we unleash our flames, mourning our fallen kin!" + "\n";
-        DialogueTwo = "\n" + "Darkness descends as I unleash my wrath. Let the flames of chaos consume all who dare challenge my dominion." + "\n";
-        DialogueThree = "\n" + "From the shadows of time, I emerge, a harbinger of doom. Tremble, mortals, as I unleash chaos upon you!" + "\n";
+        setDialogueOne("Once majestic witness our sorrowful flight! With heavy hearts, we unleash our flames, mourning our fallen kin!");
+        setDialogueTwo("Darkness descends as I unleash my wrath. Let the flames of chaos consume all who dare challenge my dominion.");
+        setDialogueThree("From the shadows of time, I emerge, a harbinger of doom. Tremble, mortals, as I unleash chaos upon you!");
     }   
-
-    public double specialHealthRegen(){
-        double healthIncrement = 2;
-        healthIncrement++;
-        System.out.println("Azzaji's Shadow Blessing.");
-        System.out.println("It's health has Increased by: " + healthIncrement + "\n");
-
-        return healthIncrement;
-    }
-    
-    public double specialCounterAssault(){
-        System.out.println("Bramzark Used Counter Assault.");
-        
-        return attack();
-    }
 }
